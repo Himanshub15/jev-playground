@@ -2,6 +2,7 @@
   "name": "jev-playground",
   "main": "src/index.js",
   "compatibility_date": "2026-09-01",
+  "observability": { "enabled": true },
   "vars": {
     "ALLOWED_ORIGINS": "https://himanshubhusari.com,https://www.himanshubhusari.com,https://himanshub15.github.io,http://localhost:3000"
   },

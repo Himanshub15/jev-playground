@@ -186,12 +186,17 @@ export default {
           "X-OpenRouter-Title": "Jev Playground",
         },
         body: JSON.stringify({ model: MODEL, state: { text }, questions: QUESTIONS }),
-        signal: AbortSignal.timeout(4000),
+        // Jev usually answers in ~0.2s or ~2.5s; 8s leaves room for the slow tail.
+        signal: AbortSignal.timeout(8000),
       });
-    } catch {
+    } catch (err) {
+      console.warn(`[jev] fetch failed after ${Date.now() - started}ms: ${err}`);
       return json({ error: "Upstream unreachable" }, 502, cors);
     }
-    if (!res.ok) return json({ error: `Upstream ${res.status}` }, 502, cors);
+    if (!res.ok) {
+      console.warn(`[jev] upstream ${res.status}: ${(await res.text()).slice(0, 300)}`);
+      return json({ error: `Upstream ${res.status}` }, 502, cors);
+    }
 
     const data = await res.json().catch(() => null);
     if (!data?.answers?.intent) return json({ error: "Bad upstream response" }, 502, cors);

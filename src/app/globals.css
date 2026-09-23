@@ -43,9 +43,9 @@
   --color-positive: var(--positive);
   --color-caution: var(--caution);
   --color-caution-text: var(--caution-text);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-sans: var(--font-geist-mono), ui-monospace;
   --font-mono: var(--font-geist-mono), ui-monospace;
-  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-heading: var(--font-geist-mono), ui-monospace;
   --radius-shell: var(--radius-2xl);
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -54,34 +54,34 @@
 :root {
   --radius: 0.75rem;
 
-  --background: #fafaf9;
-  --foreground: #1a1a19;
+  --background: #fdfdfd;
+  --foreground: #282728;
   --card: #ffffff;
-  --card-foreground: #1a1a19;
+  --card-foreground: #282728;
   --popover: #ffffff;
-  --popover-foreground: #1a1a19;
+  --popover-foreground: #282728;
 
-  --primary: #1a1a19;
-  --primary-foreground: #fafaf9;
-  --secondary: #f4f4f2;
-  --secondary-foreground: #1a1a19;
-  --muted: #f4f4f2;
-  --muted-foreground: #706e68; /* was #8f8d86 (3.0–3.3:1); now ≥4.6:1 on card, page and secondary */
-  --accent: #eef1fd;
-  --accent-foreground: #3b5bdb;
+  --primary: #282728;
+  --primary-foreground: #fdfdfd;
+  --secondary: #f3f3f3;
+  --secondary-foreground: #282728;
+  --muted: #f3f3f3;
+  --muted-foreground: #6b6b6b;
+  --accent: #e8f2f9;
+  --accent-foreground: #006cac;
   --destructive: #e03131;
 
-  --border: #e8e7e4;
-  --input: #e8e7e4;
-  --ring: #3b5bdb;
+  --border: #ece9e9;
+  --input: #ece9e9;
+  --ring: #006cac;
 
-  --brand: #3b5bdb;
-  --brand-soft: #eef1fd;
-  --ink-2: #57564f;
-  --line-strong: #d6d4cf;
+  --brand: #006cac;
+  --brand-soft: #e8f2f9;
+  --ink-2: #4a494a;
+  --line-strong: #dcd8d8;
   --positive: #2f9e44;
   --caution: #e8590c;
-  --caution-text: #bb4c19; /* caution hue at text contrast: 4.6:1 on the caution tint */
+  --caution-text: #bb4c19;
   --swatch-outline: rgb(26 26 25 / 0.06);
 
   --shadow-rest: 0 1px 2px rgb(26 26 25 / 0.04), 0 1px 1px rgb(26 26 25 / 0.03);
@@ -89,6 +89,13 @@
   --shadow-float: 0 2px 4px rgb(26 26 25 / 0.04), 0 20px 48px -12px rgb(26 26 25 / 0.14);
 
   color-scheme: light;
+
+  /* Prompt border: soft blue gradient that slowly circles the shell */
+  --halo-1: #8ec3e6;
+  --halo-2: #d4e9f6;
+  --halo-3: #4f9fd1;
+  --halo-soft: rgb(0 108 172 / 0.06);
+  --halo-glow: rgb(0 108 172 / 0.28);
 }
 
 /* Dark palette: follows the site-wide "theme" setting from himanshubhusari.com */
@@ -96,23 +103,23 @@ html[data-theme="dark"] {
 
   --background: #212737;
   --foreground: #eaedf3;
-  --card: #283044;
+  --card: #262d40;
   --card-foreground: #eaedf3;
   --popover: #2c3449;
   --popover-foreground: #eaedf3;
 
   --primary: #eaedf3;
   --primary-foreground: #212737;
-  --secondary: #323b52;
+  --secondary: #2a3347;
   --secondary-foreground: #eaedf3;
-  --muted: #323b52;
-  --muted-foreground: #a3abbd;
+  --muted: #2a3347;
+  --muted-foreground: #a0a9bc;
   --accent: #3d302b;
   --accent-foreground: #ff8a3d;
   --destructive: #ff6b6b;
 
-  --border: #3a4359;
-  --input: #3a4359;
+  --border: #2e3650;
+  --input: #2e3650;
   --ring: #ff6b01;
 
   --brand: #ff6b01;
@@ -129,6 +136,12 @@ html[data-theme="dark"] {
   --shadow-float: 0 2px 4px rgb(0 0 0 / 0.2), 0 20px 48px -12px rgb(0 0 0 / 0.5);
 
   color-scheme: dark;
+
+  --halo-1: #3f7fb0;
+  --halo-2: #22405c;
+  --halo-3: #6fb3e3;
+  --halo-soft: rgb(111 179 227 / 0.07);
+  --halo-glow: rgb(111 179 227 / 0.22);
 }
 
 @layer base {
@@ -244,4 +257,29 @@ html[data-theme="dark"] {
 body.demo-idle,
 body.demo-idle * {
   cursor: none !important;
+}
+
+/* The prompt shell: a delicate blue gradient border that slowly circles, plus a faint halo */
+@property --jev-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.jev-shell {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    conic-gradient(from var(--jev-angle), var(--halo-1), var(--halo-2), var(--halo-3), var(--halo-2), var(--halo-1)) border-box;
+  box-shadow: 0 0 0 4px var(--halo-soft), var(--shadow-rest);
+  transition: box-shadow 200ms var(--ease-out);
+  animation: jev-orbit 12s linear infinite;
+}
+.jev-shell:focus-within {
+  box-shadow: 0 0 0 5px var(--halo-soft), 0 12px 40px -16px var(--halo-glow);
+}
+@keyframes jev-orbit {
+  to { --jev-angle: 360deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jev-shell { animation: none; }
 }

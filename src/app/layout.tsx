@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 // viewport-fit=cover lets fixed chrome (HUD, toasts) pad itself away from the home indicator.
-export const viewport: Viewport = { themeColor: "#fafaf9", colorScheme: "light dark", viewportFit: "cover" };
+export const viewport: Viewport = { themeColor: "#fdfdfd", colorScheme: "light dark", viewportFit: "cover" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
