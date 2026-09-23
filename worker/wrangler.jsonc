@@ -1,0 +1,12 @@
+{
+  "name": "jev-playground",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "vars": {
+    "ALLOWED_ORIGINS": "https://himanshubhusari.com,https://www.himanshubhusari.com,https://himanshub15.github.io,http://localhost:3000"
+  },
+  // 30 calls per minute per visitor IP. Typing is debounced and cached, so this is plenty.
+  "ratelimits": [
+    { "name": "RATE_LIMITER", "namespace_id": "1001", "simple": { "limit": 30, "period": 60 } }
+  ]
+}
