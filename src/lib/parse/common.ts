@@ -24,7 +24,7 @@ export function tidy(s: string) {
   return out.trim();
 }
 
-export type Currency = "₹" | "$" | "€" | "£";
+export type Currency = "$" | "€" | "£";
 export const DEFAULT_CURRENCY: Currency = "$";
 
 export function detectCurrency(text: string): Currency {
@@ -80,11 +80,10 @@ export function removeRange(text: string, index: number, length: number) {
 }
 
 export function formatAmount(n: number, currency: Currency = DEFAULT_CURRENCY) {
-  const locale = currency === "₹" ? "en-IN" : "en-US";
   const rounded = Math.round(n * 100) / 100;
   return (
     currency +
-    rounded.toLocaleString(locale, {
+    rounded.toLocaleString("en-US", {
       minimumFractionDigits: Number.isInteger(rounded) ? 0 : 2,
       maximumFractionDigits: 2,
     })

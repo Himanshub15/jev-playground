@@ -8,7 +8,7 @@ import type { GoalData } from "@/lib/parse/goal";
 import { AnimatedNumber, Field, HeroNumber, Meta, Missing } from "./shared";
 import type { CardProps } from "./types";
 
-const fmt = (n: number) => n.toLocaleString("en-IN", { maximumFractionDigits: 1 });
+const fmt = (n: number) => n.toLocaleString("en-US", { maximumFractionDigits: 1 });
 
 export function GoalCard({ data, interactive }: CardProps<GoalData>) {
   const [current, setCurrent] = useState<number | null>(null);

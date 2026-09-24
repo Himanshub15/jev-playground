@@ -20,7 +20,8 @@ const listeners = new Set<() => void>();
 
 function load(): SavedItem[] {
   try {
-    const parsed = z.array(savedItemSchema).safeParse(JSON.parse(localStorage.getItem(KEY) ?? "[]"));
+    // Cards saved by the first release carry ₹; the app is dollars-only now.
+    const parsed = z.array(savedItemSchema).safeParse(JSON.parse((localStorage.getItem(KEY) ?? "[]").replaceAll("₹", "$")));
     return parsed.success ? parsed.data : [];
   } catch {
     return [];

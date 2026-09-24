@@ -31,7 +31,7 @@ export function parseGoal(text: string): GoalData {
     }
   }
 
-  const unitMatch = rest.match(/^\s*(?:[a-z]+\s+)?(books?|km|kms|miles?|pages?|workouts?|runs?|steps?|kg|lbs?|hours?|articles?|courses?|₹|rs|\$|dollars|rupees)\b/i);
+  const unitMatch = rest.match(/^\s*(?:[a-z]+\s+)?(books?|km|kms|miles?|pages?|workouts?|runs?|steps?|kg|lbs?|hours?|articles?|courses?|\$|dollars)\b/i);
   const unit = unitMatch ? unitMatch[1].toLowerCase() : null;
   rest = rest.replace(/\b(?:goal|target|progress|this year|this month|so far|done|by (?:end of )?\w+|in (?:january|february|march|april|may|june|july|august|september|october|november|december))\b/gi, " ");
   rest = rest.replace(/[,;]+/g, " ");
