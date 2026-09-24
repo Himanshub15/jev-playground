@@ -26,7 +26,7 @@ export function ConvertCard({ data, interactive }: CardProps<ConvertData>) {
   if (data.value === null || !data.from) {
     return (
       <Field index={0} className="flex items-center gap-2">
-        <Missing>Type a value with a unit, like 5 miles in km</Missing>
+        <Missing>Type a value with a unit, like 35000 feet in meters</Missing>
       </Field>
     );
   }

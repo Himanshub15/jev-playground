@@ -5,18 +5,18 @@ import { useEffect, useRef } from "react";
 type Step = { text: string; then?: string };
 
 export const DEMO_SCRIPT: Step[] = [
-  { text: "dinner with priya friday 8pm", then: " on zoom" },
-  { text: "buy milk, eggs, bread and coffee" },
-  { text: "25 min focus" },
-  { text: "#ff6b35" },
-  { text: "split 2400 between 3" },
-  { text: "5 miles in km" },
-  { text: "flight to goa next weekend" },
-  { text: "pizza or burgers for friday?" },
-  { text: "days until christmas" },
-  { text: "3pm pst in ist" },
-  { text: "roll 2d6" },
-  { text: "remind me to pay rent tomorrow urgent" },
+  { text: "team standup monday 10am", then: " on meet" },
+  { text: "buy coffee, batteries and limes" },
+  { text: "45 min deep work" },
+  { text: "#006cac" },
+  { text: "split $186 dinner between 4" },
+  { text: "35000 feet in meters" },
+  { text: "flight to tokyo in march" },
+  { text: "tacos or ramen for lunch?" },
+  { text: "days until new year" },
+  { text: "9am cst in tokyo" },
+  { text: "flip a coin" },
+  { text: "renew passport friday, urgent!" },
 ];
 
 export type DemoApi = {

@@ -8,13 +8,13 @@
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-f38020?style=flat-square&logo=cloudflare&logoColor=white)](https://workers.cloudflare.com)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
-<p align="center"><img src="docs/screenshot.png" alt="Typing 'split 2400 between 3' turns the text box into a bill-split card showing ₹800 each" width="820"></p>
+<p align="center"><img src="docs/screenshot.png" alt="Typing 'team standup monday 10am on meet' turns the text box into an event card" width="820"></p>
 
 ```
-dinner with priya friday 8pm on zoom   →  Event · Friday · 8 PM · Priya · Video call
-buy milk, eggs, bread and coffee       →  Shopping checklist
-split 2400 between 3                   →  ₹800 each
-minecraft diamond                      →  #4AEDD9
+team standup monday 10am on meet  →  Event · Monday · 10 AM · Google Meet
+buy coffee, batteries and limes   →  Shopping checklist
+split $186 dinner between 4       →  $46.50 each
+35000 feet in meters              →  10,668 m
 ```
 
 ## Jev decides, code computes

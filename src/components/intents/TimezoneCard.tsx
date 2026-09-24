@@ -18,7 +18,7 @@ export function TimezoneCard({ data }: CardProps<TimezoneData>) {
   if (!data.to || !data.instant) {
     return (
       <Field index={0}>
-        <Missing>Add a place or zone, like “3pm pst in ist” or “time in tokyo”</Missing>
+        <Missing>Add a place or zone, like “9am cst in tokyo” or “time in london”</Missing>
       </Field>
     );
   }

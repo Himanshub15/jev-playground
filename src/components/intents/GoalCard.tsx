@@ -23,7 +23,7 @@ export function GoalCard({ data, interactive }: CardProps<GoalData>) {
     return (
       <Field index={0} className="flex flex-col gap-1">
         {data.title && <h2 className="text-[17px] leading-6 font-[550] text-balance">{data.title}</h2>}
-        <Missing>Add a target, like “read 12 books, 4 done”</Missing>
+        <Missing>Add a target, like “run 100 miles, 34 done”</Missing>
       </Field>
     );
   }

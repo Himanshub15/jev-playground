@@ -27,7 +27,7 @@ export function ColorPicker({ data, interactive }: CardProps<ColorData>) {
     return (
       <Field index={0} className="flex items-center gap-4">
         <div className="size-16 shrink-0 rounded-md border border-dashed border-line-strong" />
-        <Missing>Type a hex code like #ff6b35 or a color name</Missing>
+        <Missing>Type a hex code like #006cac or a color name</Missing>
       </Field>
     );
   }

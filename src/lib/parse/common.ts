@@ -25,7 +25,7 @@ export function tidy(s: string) {
 }
 
 export type Currency = "₹" | "$" | "€" | "£";
-export const DEFAULT_CURRENCY: Currency = "₹";
+export const DEFAULT_CURRENCY: Currency = "$";
 
 export function detectCurrency(text: string): Currency {
   if (/\$|\busd\b|dollars?\b/i.test(text)) return "$";

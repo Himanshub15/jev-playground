@@ -7,7 +7,7 @@ const PHONE_RE = /(?:\+?\d{1,3}[\s-]?)?\(?\d{3,5}\)?[\s-]?\d{3,5}[\s-]?\d{0,5}/;
 
 export function formatPhone(raw: string) {
   const digits = raw.replace(/\D/g, "");
-  if (digits.length === 10) return `${digits.slice(0, 5)} ${digits.slice(5)}`;
+  if (digits.length === 10) return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
   if (digits.length === 12 && digits.startsWith("91")) return `+91 ${digits.slice(2, 7)} ${digits.slice(7)}`;
   return raw.trim();
 }

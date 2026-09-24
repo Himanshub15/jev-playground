@@ -145,11 +145,11 @@ describe("color", () => {
 });
 
 describe("split", () => {
-  test("split 2400 between 3", () => expect(parseSplit("split 2400 between 3")).toEqual({ total: 2400, people: 3, currency: "₹" }));
+  test("split 2400 between 3", () => expect(parseSplit("split 2400 between 3")).toEqual({ total: 2400, people: 3, currency: "$" }));
   test("dollars", () => expect(parseSplit("split $90 among four").currency).toBe("$"));
   test("names", () => expect(parseSplit("split 900 between me, rahul and priya").people).toBe(3));
   test("ways", () => expect(parseSplit("1,200 4 ways").total).toBe(1200));
-  test("partial", () => expect(parseSplit("split 500")).toEqual({ total: 500, people: null, currency: "₹" }));
+  test("partial", () => expect(parseSplit("split 500")).toEqual({ total: 500, people: null, currency: "$" }));
 });
 
 describe("expense", () => {
@@ -230,7 +230,7 @@ describe("poll", () => {
 describe("contact", () => {
   test("rahul 98200 12345 rahul@mail.com", () => {
     const c = parseContact("rahul 98200 12345 rahul@mail.com");
-    expect(c).toEqual({ name: "Rahul", phone: "98200 12345", email: "rahul@mail.com", initials: "R" });
+    expect(c).toEqual({ name: "Rahul", phone: "(982) 001-2345", email: "rahul@mail.com", initials: "R" });
   });
   test("+91", () => expect(parseContact("anna sharma +91 98765 43210").phone).toBe("+91 98765 43210"));
   test("initials", () => expect(parseContact("anna sharma a@b.co").initials).toBe("AS"));

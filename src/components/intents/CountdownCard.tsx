@@ -11,7 +11,7 @@ export function CountdownCard({ data }: CardProps<CountdownData>) {
   if (data.days === null || !data.date) {
     return (
       <Field index={0}>
-        <Missing>Type a date or a holiday, like “days until christmas”</Missing>
+        <Missing>Type a date or a holiday, like “days until new year”</Missing>
       </Field>
     );
   }
